@@ -1,12 +1,19 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
-        res, word = [], \\
+        res, stack, word = \\, [], \\
         for char in s:
             if char != \ \:
                 word += char
             elif word:
-                res.append(word)
+                stack.append(word)
                 word = \\
+        
         if word:
-            res.append(word)
-        return \ \.join(res[::-1])
+            stack.append(word)
+        
+        while stack:
+            res += stack.pop()
+            if stack:
+                res += \ \
+                
+        return res
