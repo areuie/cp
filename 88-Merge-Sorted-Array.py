@@ -3,13 +3,18 @@ class Solution:
         \\\
         Do not return anything, modify nums1 in-place instead.
         \\\
-        pI, p1, p2 = m + n -1, m -1, n -1
-        while pI >= 0:
-            if p2 < 0 or p1 >= 0 and nums1[p1] >= nums2[p2]:
-                nums1[pI] = nums1[p1]
-                p1-=1
-            elif p1 < 0 or p2 >= 0 and nums1[p1] <= nums2[p2]:
-                nums1[pI] = nums2[p2]
-                p2-=1
-            pI-=1
-            
+        l = m - 1
+        r = n - 1
+        for i in range(m+n-1, -1, -1):
+            if r < 0:
+                continue
+            val = 0
+            if l >= 0 and nums1[l] >= nums2[r]:
+                val = nums1[l]
+                l-=1
+            else:
+                val = nums2[r]
+                r-=1
+            nums1[i] = val
+        
+        
